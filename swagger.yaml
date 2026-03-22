@@ -10,7 +10,7 @@ info:
     email: rahulsinghpal155@gmail.com
 
 servers:
-  - url: http://localhost:3000
+  - url: https://event-booking-system-api-production.up.railway.app
     description: Local development server
 
 tags:
