@@ -2,6 +2,10 @@
 
 A **Mini Event Management System** built with **Node.js (Express)**, **MySQL**, and documented via **OpenAPI 3.0 / Swagger**.
 
+🚀 **Live API:** https://event-booking-system-api-production.up.railway.app  
+📖 **Swagger Docs:** https://event-booking-system-api-production.up.railway.app/api-docs  
+💻 **GitHub:** https://github.com/Rahulpal154/event-booking-system-api
+
 ---
 
 ## Table of Contents
@@ -13,7 +17,6 @@ A **Mini Event Management System** built with **Node.js (Express)**, **MySQL**, 
 - [Setup — Docker (One-Click)](#setup--docker-one-click)
 - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
-- [Running the Server](#running-the-server)
 - [Swagger UI](#swagger-ui)
 - [Postman Collection](#postman-collection)
 - [Design Decisions](#design-decisions)
@@ -32,6 +35,7 @@ A **Mini Event Management System** built with **Node.js (Express)**, **MySQL**, 
 | Unique Code | uuid (v4)                         |
 | Docs        | swagger-ui-express + OpenAPI 3.0  |
 | Container   | Docker + docker-compose           |
+| Hosting     | Railway (API + MySQL)             |
 
 ---
 
@@ -78,8 +82,8 @@ event-booking-system/
 ### 1. Clone & install
 
 ```bash
-git clone <your-repo-url>
-cd event-booking-system
+git clone https://github.com/Rahulpal154/event-booking-system-api.git
+cd event-booking-system-api
 npm install
 ```
 
@@ -91,8 +95,6 @@ cp .env.example .env
 ```
 
 ### 3. Create the database & schema
-
-Log in to MySQL and run:
 
 ```bash
 mysql -u root -p < schema.sql
@@ -145,7 +147,8 @@ docker-compose down -v
 | Variable      | Default             | Description                   |
 |---------------|---------------------|-------------------------------|
 | `PORT`        | `3000`              | HTTP port                     |
-| `DB_HOST`     | `localhost`         | MySQL host                    |
+| `MYSQL_URL`   | _(empty)_           | Full MySQL connection string (used in production) |
+| `DB_HOST`     | `localhost`         | MySQL host (used locally)     |
 | `DB_PORT`     | `3306`              | MySQL port                    |
 | `DB_USER`     | `root`              | MySQL username                |
 | `DB_PASSWORD` | _(empty)_           | MySQL password                |
@@ -197,8 +200,12 @@ Returns a unique `booking_code` (UUID v4) on success.
 
 ## Swagger UI
 
-After starting the server, visit:
+**Live (Production):**
+```
+https://event-booking-system-api-production.up.railway.app/api-docs
+```
 
+**Local:**
 ```
 http://localhost:3000/api-docs
 ```
@@ -213,7 +220,9 @@ Import `postman_collection.json` into Postman:
 
 1. Open Postman → **Import**
 2. Select `postman_collection.json`
-3. Set the `baseUrl` variable to `http://localhost:3000`
+3. Set the `baseUrl` variable to:
+   - Local: `http://localhost:3000`
+   - Production: `https://event-booking-system-api-production.up.railway.app`
 4. All requests are pre-configured and ready to run
 
 ---
