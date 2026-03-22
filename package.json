@@ -1,0 +1,25 @@
+{
+  "name": "event-booking-system",
+  "version": "1.0.0",
+  "description": "Mini Event Management System - Junior Node.js Developer Selection Test",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "express-validator": "^7.0.1",
+    "mysql2": "^3.9.2",
+    "swagger-ui-express": "^5.0.0",
+    "uuid": "^9.0.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "keywords": ["nodejs", "express", "mysql", "event-booking"],
+  "author": "Rahul Pal",
+  "license": "MIT"
+}
